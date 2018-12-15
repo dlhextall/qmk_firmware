@@ -1,7 +1,9 @@
 # AEK65ISO
 
 Keyboard maintainer: [David Lafrance](https://github.com/dlhextall)
+
 Hardware: Teensy 2.0 handwired
+
 Layout: [Keyboard Layout Editor](http://www.keyboard-layout-editor.com/#/gists/73bf1202cdcb0c59fbf8667ac84684b0)
 
 Make example for this keyboard: 
