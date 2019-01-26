@@ -198,7 +198,7 @@ bool is_keyboard_master(void) {
  */
 void keyboard_init(void) {
     timer_init();
-    matrix_init();    
+    matrix_init();
 #ifdef QWIIC_ENABLE
     qwiic_init();
 #endif
@@ -259,7 +259,7 @@ void keyboard_task(void)
     uint8_t keys_processed = 0;
 #endif
 
-    matrix_scan();    
+    matrix_scan();
 
     if (is_keyboard_master()) {
         for (uint8_t r = 0; r < MATRIX_ROWS; r++) {
@@ -267,7 +267,7 @@ void keyboard_task(void)
             matrix_change = matrix_row ^ matrix_prev[r];
             if (matrix_change) {
 #ifdef MATRIX_HAS_GHOST
-                if (has_ghost_in_row(r, matrix_row)) continue;
+                if (has_ghost_in_row(r, matrix_row)) { continue; }
 #endif
                 if (debug_matrix) matrix_print();
                 for (uint8_t c = 0; c < MATRIX_COLS; c++) {
