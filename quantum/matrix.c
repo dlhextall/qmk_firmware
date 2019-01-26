@@ -51,8 +51,8 @@ static const pin_t col_pins[MATRIX_COLS] = MATRIX_COL_PINS;
 #endif
 
 /* matrix state(1:on, 0:off) */
-static matrix_row_t raw_matrix[MATRIX_ROWS];
-
+static matrix_row_t raw_matrix[MATRIX_ROWS]; //raw values
+static matrix_row_t matrix[MATRIX_ROWS]; //debounced values
 
 #if (DIODE_DIRECTION == COL2ROW)
     static void init_cols(void);
@@ -122,7 +122,7 @@ void matrix_init(void) {
         raw_matrix[i] = 0;
         matrix[i] = 0;
     }
-    debounce_init(MATRIX_ROWS);
+    debounce_init();
 
     matrix_init_quantum();
 }
@@ -143,8 +143,10 @@ uint8_t matrix_scan(void)
     }
 #endif
 
-    matrix_scan_quantum();
-    return 1;
+  debounce(raw_matrix, matrix, changed);
+
+  matrix_scan_quantum();
+  return 1;
 }
 
 //Deprecated.
