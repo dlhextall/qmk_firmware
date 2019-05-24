@@ -17,4 +17,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 
+<<<<<<< HEAD
+<<<<<<< HEAD:keyboards/keebio/nyquist/keymaps/tester/config.h
 #define USE_I2C
+=======
+#include "config_common.h"
+>>>>>>> master:keyboards/keebio/nyquist/config.h
+=======
+#define USE_I2C
+>>>>>>> master
