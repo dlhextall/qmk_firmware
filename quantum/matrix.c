@@ -21,15 +21,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "debug.h"
 #include "util.h"
 #include "matrix.h"
-<<<<<<< HEAD
-#include "debounce.h"
-#include "quantum.h"
-
-=======
 #include "timer.h"
 
 
->>>>>>> master
 #if (MATRIX_COLS <= 8)
 #    define print_matrix_header()  print("\nr/c 01234567\n")
 #    define print_matrix_row(row)  print_bin_reverse8(matrix_get_row(row))
@@ -138,17 +132,6 @@ uint8_t matrix_scan(void)
   bool changed = false;
 
 #if (DIODE_DIRECTION == COL2ROW)
-<<<<<<< HEAD
-  // Set row, read cols
-  for (uint8_t current_row = 0; current_row < MATRIX_ROWS; current_row++) {
-    changed |= read_cols_on_row(raw_matrix, current_row);
-  }
-#elif (DIODE_DIRECTION == ROW2COL)
-  // Set col, read rows
-  for (uint8_t current_col = 0; current_col < MATRIX_COLS; current_col++) {
-    changed |= read_rows_on_col(raw_matrix, current_col);
-  }
-=======
     // Set row, read cols
     for (uint8_t current_row = 0; current_row < MATRIX_ROWS; current_row++) {
         read_cols_on_row(matrix, current_row);
@@ -158,7 +141,6 @@ uint8_t matrix_scan(void)
     for (uint8_t current_col = 0; current_col < MATRIX_COLS; current_col++) {
         read_rows_on_col(matrix, current_col);
     }
->>>>>>> master
 #endif
 
   debounce(raw_matrix, matrix, MATRIX_ROWS, changed);
@@ -170,10 +152,6 @@ uint8_t matrix_scan(void)
 //Deprecated.
 bool matrix_is_modified(void)
 {
-<<<<<<< HEAD
-    if (debounce_active()) return false;
-=======
->>>>>>> master
     return true;
 }
 
