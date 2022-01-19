@@ -367,12 +367,3 @@ uint8_t matrix_scan(void) {
 #endif
     return (uint8_t)changed;
 }
-
-static void unselect_cols(void)
-{
-    for(uint8_t x = 0; x < MATRIX_COLS; x++) {
-        setPinInputHigh(col_pins[x]);
-    }
-}
-
-#endif
